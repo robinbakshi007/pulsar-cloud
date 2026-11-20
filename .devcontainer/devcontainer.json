@@ -1,0 +1,19 @@
+{
+  "name": "Pulsar Cloud (Antigravity + Claude Code + Codex)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [48632],
+  "portsAttributes": {
+    "48632": {
+      "label": "Pulsar Pairing Dashboard",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/node/.local/bin"
+  },
+  "postCreateCommand": "bash .devcontainer/install-tools.sh",
+  "postStartCommand": "bash .devcontainer/start-pulsar.sh"
+}

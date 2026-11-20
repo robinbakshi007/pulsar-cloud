@@ -1,0 +1,21 @@
+# Deploy a personal always-on Pulsar Cloud box to Fly.io:
+#   fly launch --no-deploy
+#   fly volumes create pulsar_data --size 10
+#   fly deploy
+#   fly ssh console -C "agy acp --login"
+#   fly logs   # copy the pairing code into the Pulsar phone app!
+
+app = "pulsar-cloud-box"
+primary_region = "syd"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[[mounts]]
+  source = "pulsar_data"
+  destination = "/home/pulsar"
+
+[[vm]]
+  memory = "2gb"
+  cpu_kind = "shared"
+  cpus = 2

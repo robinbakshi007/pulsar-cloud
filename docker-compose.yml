@@ -1,0 +1,17 @@
+services:
+  pulsar-cloud:
+    build: .
+    container_name: pulsar-cloud
+    restart: unless-stopped
+    environment:
+      # Optional: paste your Pulsar Pro or 60-day Android Beta license key
+      PULSAR_LICENSE_KEY: ${PULSAR_LICENSE_KEY:-}
+    volumes:
+      - pulsar_config:/home/pulsar/.agentdeck
+      - pulsar_gemini:/home/pulsar/.gemini
+      - pulsar_workspaces:/home/pulsar/workspaces
+
+volumes:
+  pulsar_config:
+  pulsar_gemini:
+  pulsar_workspaces:
